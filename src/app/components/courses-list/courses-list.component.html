@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col" *ngFor="let course of courses">
+    <div class="card" style="width: 18rem;">
+      <img src="{{course.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{course.title}}</h5>
+        <p class="card-text">{{course.description}}</p>
+        <p class="card-text" *ngIf="loggedIn">Rating: {{course.rating}}</p>
+        <button type="button" *ngIf="loggedIn" class="btn btn-secondary" (click)="addVote(course, 1)">1</button>
+        <button type="button" *ngIf="loggedIn" class="btn btn-secondary ml-2 mr-2" (click)="addVote(course, 2)">2</button>
+        <button type="button" *ngIf="loggedIn" class="btn btn-secondary" (click)="addVote(course, 3)">3</button>
+        <button type="button" *ngIf="isAdmin" class="btn btn-primary btn-block mt-3" routerLink="/edit-course/{{course.id}}"> Edit Course </button>
+      </div>
+    </div>
+  </div>
+</div>
